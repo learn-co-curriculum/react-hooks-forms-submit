@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this lesson, we'll discuss how handle forms submitting in React.
+In this lesson, we'll discuss how to handle forms submitting in React.
 
 ## Objectives
 
