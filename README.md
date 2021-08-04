@@ -18,7 +18,7 @@ Now that we've learned how to control a form with state, we want to set up a way
 to submit our form. For this, we use a different type of event listener,
 `onSubmit`, added to the `form` in JSX:
 
-```js
+```jsx
 return (
   <form onSubmit={handleSubmit}>
     <input type="text" onChange={handleFirstNameChange} value={firstName} />
@@ -33,7 +33,7 @@ input field, or clicking a Submit button), a callback function will be called,
 `handleSubmit`. We don't have a function `handleSubmit` yet, so let's write one
 out:
 
-```js
+```jsx
 function handleSubmit(event) {
   event.preventDefault();
   const formData = {
@@ -79,7 +79,7 @@ You can contrast this to handling an _uncontrolled_ form being submitted, in
 which case you would need to access the input fields from the DOM instead
 of accessing the values from state:
 
-```js
+```jsx
 function handleSubmit(event) {
   event.preventDefault();
   // in an uncontrolled form, you need to access the input fields from the DOM
@@ -95,7 +95,7 @@ We don't have a server to send our data to, but to demonstrate submission, we
 could modify our `Form` component to list out submissions, storing them in
 state:
 
-```js
+```jsx
 import React, { useState } from "react";
 
 function Form() {
@@ -157,7 +157,7 @@ can submit the form successfully.
 In our handle submit, we can add some validation logic to check if the form
 inputs have the required data, and hold some error messages in state:
 
-```js
+```jsx
 // add state for holding error messages
 const [errors, setErrors] = useState([]);
 
@@ -179,7 +179,7 @@ function handleSubmit(event) {
 
 Then, we can display an error message to our user in the JSX:
 
-```js
+```jsx
 return (
   <div>
     <form onSubmit={handleSubmit}>
