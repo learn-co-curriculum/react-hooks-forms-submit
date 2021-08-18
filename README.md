@@ -5,9 +5,9 @@
 - Handle a form's submit event in React
 - Use controlled inputs to validate values
 
-## Overview
+## Introduction
 
-In this lesson, we'll discuss how to handle forms submitting in React.
+In this lesson, we'll discuss how to handle form submission in React.
 
 If you want to code along there is starter code in the `src` folder. Make sure
 to run `npm install && npm start` to see the code in the browser.
@@ -15,8 +15,8 @@ to run `npm install && npm start` to see the code in the browser.
 ## Submitting a Controlled Form
 
 Now that we've learned how to control a form with state, we want to set up a way
-to submit our form. For this, we use a different type of event listener,
-`onSubmit`, added to the `form` in JSX:
+to submit our form. For this, we add the `onSubmit` event listener to our `form`
+element:
 
 ```jsx
 return (
@@ -29,9 +29,9 @@ return (
 ```
 
 Now, whenever the form is submitted (by pressing the Enter or Return key in an
-input field, or clicking a Submit button), a callback function will be called,
-`handleSubmit`. We don't have a function `handleSubmit` yet, so let's write one
-out:
+input field, or by clicking a Submit button), the `handleSubmit` callback
+function will be called. We don't have the `handleSubmit` function yet, so let's
+write it out:
 
 ```jsx
 function handleSubmit(event) {
@@ -60,7 +60,7 @@ Let's look at each line of code in this function:
 - `const formData = { firstName: firstName, lastName: lastName }`: Here, we are
   putting together the current form data into an object using the values stored
   in state.
-- `props.sendFormDataSomewhere(formData)`: A form, when submitted should send
+- `props.sendFormDataSomewhere(formData)`: A form, when submitted, should send
   the form data somewhere. As mentioned a moment ago, the traditional HTML way
   was to send data to a server or another page using the `action` attribute. In
   React, we handle requests with asynchronous JavaScript. We won't go into the
@@ -70,10 +70,9 @@ Let's look at each line of code in this function:
   a prop.
 - `setFirstName("")`: if we want to clear the input fields, all we need to do is
   set state! In a traditional JavaScript form, you might do something like
-  `event.target.reset()` to clear out the form fields. Here, we need to ensure
-  that our component state matches what the user sees in the form. By setting
-  state to an empty string, we're keeping our React component state in sync with
-  what the user sees on the page.
+  `event.target.reset()` to clear out the form fields. Here, because we are
+  using controlled inputs, setting state to an empty string clears out the
+  values from the input fields once the data has been submitted.
 
 You can contrast this to handling an _uncontrolled_ form being submitted, in
 which case you would need to access the input fields from the DOM instead
@@ -91,9 +90,10 @@ function handleSubmit(event) {
 }
 ```
 
-We don't have a server to send our data to, but to demonstrate submission, we
-could modify our `Form` component to list out submissions, storing them in
-state:
+Since we don't have a server to send our data to, let's remove our
+`sendFormDataSomewhere()` function. Instead, we'll demonstrate submission by
+modifying our `Form` component to access submitted values from state and list
+them in the DOM:
 
 ```jsx
 import React, { useState } from "react";
@@ -151,11 +151,11 @@ a fully functioning controlled form.
 
 One benefit we get from having our form's input values held in state is an easy
 way to perform validations when the form is submitted. For example, let's say we
-want to require that a user enters some data into our form fields before they
+want to require that a user enter some data into our form fields before they
 can submit the form successfully.
 
-In our handle submit, we can add some validation logic to check if the form
-inputs have the required data, and hold some error messages in state:
+In our `handleSubmit` function, we can add some validation logic to check if the
+form inputs have the required data, and hold some error messages in state:
 
 ```jsx
 // add state for holding error messages
@@ -203,12 +203,12 @@ return (
 
 ## Conclusion
 
-By setting up our form components using **controlled inputs**, we give React
-state control over the data being displayed in the DOM. As a benefit of having
-all the form data in state, we can more easily access form data via state when a
-form is submitted, so that we can send that data to another component, or use it
-to make a fetch request. We can also more easily perform some validation logic
-when the form data submitted.
+By setting up our form components using controlled inputs, we give React state
+control over the data being displayed in the DOM. As a benefit of having the
+form data in state, we can more easily access it once a form is submitted and
+either pass it along to another component or use it to make a fetch request. We
+can also more easily perform some validation logic when the form data is
+submitted.
 
 ## Resources
 
