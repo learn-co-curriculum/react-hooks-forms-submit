@@ -99,8 +99,8 @@ them in the DOM:
 import React, { useState } from "react";
 
 function Form() {
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("Henry");
+  const [firstName, setFirstName] = useState("Sylvia");
+  const [lastName, setLastName] = useState("Woods");
   const [submittedData, setSubmittedData] = useState([]);
 
   function handleFirstNameChange(event) {
