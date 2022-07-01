@@ -19,6 +19,7 @@ to submit our form. For this, we add the `onSubmit` event listener to our `form`
 element:
 
 ```jsx
+// src/components/Form.js
 return (
   <form onSubmit={handleSubmit}>
     <input type="text" onChange={handleFirstNameChange} value={firstName} />
